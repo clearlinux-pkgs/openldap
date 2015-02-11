@@ -1,0 +1,9 @@
+# This file contains the output files that need %exclude. Full path
+# names, one per line.
+/etc/openldap/ldap.conf
+/etc/openldap/ldap.conf.default
+/etc/openldap/DB_CONFIG.example
+/etc/openldap/slapd.conf
+/etc/openldap/slapd.conf.default
+/etc/openldap/slapd.ldif
+/etc/openldap/slapd.ldif.default

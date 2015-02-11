@@ -1,0 +1,9 @@
+--enable-dynamic
+--disable-debug
+--enable-crypt
+--enable-modules
+--enable-rlookups
+--enable-backends=mod
+--enable-overlays=mod
+--disable-ndb
+--disable-sql
