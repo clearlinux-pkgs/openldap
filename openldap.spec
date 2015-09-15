@@ -4,7 +4,7 @@
 #
 Name     : openldap
 Version  : 2.4.42
-Release  : 11
+Release  : 12
 URL      : http://www.openldap.org/software/download/OpenLDAP/openldap-release/openldap-2.4.42.tgz
 Source0  : http://www.openldap.org/software/download/OpenLDAP/openldap-release/openldap-2.4.42.tgz
 Source1  : openldap.tmpfiles
@@ -21,6 +21,7 @@ BuildRequires : groff
 BuildRequires : openssl-dev
 BuildRequires : pkgconfig(uuid)
 Patch1: schemadir.patch
+Patch2: cve-2015-6908.patch
 
 %description
 For a description of what this distribution contains, see the
@@ -60,6 +61,7 @@ Group: Development
 Requires: openldap-lib
 Requires: openldap-bin
 Requires: openldap-data
+Provides: openldap-devel
 
 %description dev
 dev components for the openldap package.
@@ -86,6 +88,7 @@ lib components for the openldap package.
 %prep
 %setup -q -n openldap-2.4.42
 %patch1 -p1
+%patch2 -p1
 
 %build
 %configure --disable-static --enable-dynamic \
