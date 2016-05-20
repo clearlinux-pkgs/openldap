@@ -4,7 +4,7 @@
 #
 Name     : openldap
 Version  : 2.4.44
-Release  : 16
+Release  : 17
 URL      : http://www.openldap.org/software/download/OpenLDAP/openldap-release/openldap-2.4.44.tgz
 Source0  : http://www.openldap.org/software/download/OpenLDAP/openldap-release/openldap-2.4.44.tgz
 Source1  : openldap.tmpfiles
@@ -108,7 +108,7 @@ install -m 0644 %{SOURCE1} %{buildroot}/usr/lib/tmpfiles.d/openldap.conf
 
 %files
 %defattr(-,root,root,-)
-/var/openldap-data/DB_CONFIG.example
+%exclude /var/openldap-data/DB_CONFIG.example
 
 %files bin
 %defattr(-,root,root,-)

@@ -7,3 +7,4 @@
 /etc/openldap/slapd.conf.default
 /etc/openldap/slapd.ldif
 /etc/openldap/slapd.ldif.default
+/var/openldap-data/DB_CONFIG.example

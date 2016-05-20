@@ -1,0 +1,13 @@
+libc.so.6
+libcrypt.so.1
+libcrypto.so.1.0.0
+libdb-5.3.so
+libdl.so.2
+libltdl.so.7
+libm.so.6
+libnsl.so.1
+libpthread.so.0
+libresolv.so.2
+libssl.so.1.0.0
+libutil.so.1
+libuuid.so.1
