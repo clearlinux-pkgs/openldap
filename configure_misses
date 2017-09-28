@@ -1,0 +1,69 @@
+Configure miss: whether we are using MS Visual C++
+Configure miss: be_app in -lbe
+Configure miss: afopen in -ls
+Configure miss: EBCDIC
+Configure miss: conio.h usability
+Configure miss: conio.h presence
+Configure miss: conio.h
+Configure miss: direct.h usability
+Configure miss: direct.h presence
+Configure miss: filio.h usability
+Configure miss: filio.h presence
+Configure miss: filio.h
+Configure miss: psap.h usability
+Configure miss: psap.h presence
+Configure miss: psap.h
+Configure miss: process.h usability
+Configure miss: process.h presence
+Configure miss: sys/fstyp.h usability
+Configure miss: sys/fstyp.h presence
+Configure miss: sys/fstyp.h
+Configure miss: sys/privgrp.h usability
+Configure miss: sys/privgrp.h presence
+Configure miss: sys/privgrp.h
+Configure miss: sys/vmount.h usability
+Configure miss: sys/vmount.h presence
+Configure miss: sys/vmount.h
+Configure miss: sys/ucred.h
+Configure miss: sys/devpoll.h usability
+Configure miss: sys/devpoll.h presence
+Configure miss: sys/devpoll.h
+Configure miss: non-posix strerror_r
+Configure miss: sys/uuid.h usability
+Configure miss: sys/uuid.h presence
+Configure miss: sys/uuid.h
+Configure miss: resolver link (default)
+Configure miss: _beginthread
+Configure miss: LinuxThreads pthread.h
+Configure miss: GNU Pth pthread.h
+Configure miss: pthread_create in default libraries
+Configure miss: pthread link with -kthread
+Configure miss: thr_yield
+Configure miss: thr_setconcurrency
+Configure miss: thr_getconcurrency
+Configure miss: pthread_kill_other_threads_np
+Configure miss: LinuxThreads implementation
+Configure miss: LinuxThreads consistency
+Configure miss: unicode/utypes.h usability
+Configure miss: unicode/utypes.h presence
+Configure miss: unicode/utypes.h
+Configure miss: sasl/sasl.h usability
+Configure miss: sasl/sasl.h presence
+Configure miss: sasl/sasl.h
+Configure miss: sasl.h usability
+Configure miss: sasl.h presence
+Configure miss: sasl.h
+Configure miss: fetch(3) library
+Configure miss: crypt
+Configure miss: setproctitle in -lutil
+Configure miss: if toupper() requires islower()
+Configure miss: _spawnlp
+Configure miss: closesocket
+Configure miss: getpassphrase
+Configure miss: inet_ntoa_b
+Configure miss: setpwfile
+Configure miss: getpeereid
+Configure miss: getpeerucred
+Configure miss: struct msghdr.msg_accrightslen
+Configure miss: struct stat.st_fstype
+Configure miss: struct stat.st_vfstype
