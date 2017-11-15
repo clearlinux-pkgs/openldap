@@ -4,7 +4,7 @@
 #
 Name     : openldap
 Version  : 2.4.45
-Release  : 25
+Release  : 26
 URL      : http://www.openldap.org/software/download/OpenLDAP/openldap-release/openldap-2.4.45.tgz
 Source0  : http://www.openldap.org/software/download/OpenLDAP/openldap-release/openldap-2.4.45.tgz
 Source1  : openldap.tmpfiles
@@ -79,7 +79,6 @@ doc components for the openldap package.
 Summary: lib components for the openldap package.
 Group: Libraries
 Requires: openldap-data
-Requires: openldap-config
 
 %description lib
 lib components for the openldap package.
@@ -94,7 +93,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1506618058
+export SOURCE_DATE_EPOCH=1510787322
 export CFLAGS="$CFLAGS -fstack-protector-strong "
 export FCFLAGS="$CFLAGS -fstack-protector-strong "
 export FFLAGS="$CFLAGS -fstack-protector-strong "
@@ -111,7 +110,7 @@ export CXXFLAGS="$CXXFLAGS -fstack-protector-strong "
 make V=1  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1506618058
+export SOURCE_DATE_EPOCH=1510787322
 rm -rf %{buildroot}
 %make_install
 mkdir -p %{buildroot}/usr/lib/tmpfiles.d
