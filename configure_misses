@@ -24,7 +24,6 @@ Configure miss: sys/privgrp.h
 Configure miss: sys/vmount.h usability
 Configure miss: sys/vmount.h presence
 Configure miss: sys/vmount.h
-Configure miss: sys/ucred.h
 Configure miss: sys/devpoll.h usability
 Configure miss: sys/devpoll.h presence
 Configure miss: sys/devpoll.h
@@ -62,8 +61,6 @@ Configure miss: closesocket
 Configure miss: getpassphrase
 Configure miss: inet_ntoa_b
 Configure miss: setpwfile
-Configure miss: getpeereid
-Configure miss: getpeerucred
 Configure miss: struct msghdr.msg_accrightslen
 Configure miss: struct stat.st_fstype
 Configure miss: struct stat.st_vfstype

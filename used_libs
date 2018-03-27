@@ -6,6 +6,7 @@ libdl.so.2
 libltdl.so.7
 libm.so.6
 libnsl.so.1
+libperl.so
 libpthread.so.0
 libresolv.so.2
 libssl.so.1.0.0
