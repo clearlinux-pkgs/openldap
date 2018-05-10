@@ -4,7 +4,7 @@
 #
 Name     : openldap
 Version  : 2.4.46
-Release  : 28
+Release  : 29
 URL      : http://www.openldap.org/software/download/OpenLDAP/openldap-release/openldap-2.4.46.tgz
 Source0  : http://www.openldap.org/software/download/OpenLDAP/openldap-release/openldap-2.4.46.tgz
 Source1  : openldap.tmpfiles
