@@ -4,7 +4,7 @@
 #
 Name     : openldap
 Version  : 2.4.46
-Release  : 29
+Release  : 30
 URL      : http://www.openldap.org/software/download/OpenLDAP/openldap-release/openldap-2.4.46.tgz
 Source0  : http://www.openldap.org/software/download/OpenLDAP/openldap-release/openldap-2.4.46.tgz
 Source1  : openldap.tmpfiles
@@ -93,11 +93,11 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1522118464
-export CFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs "
-export FCFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs "
-export FFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs "
-export CXXFLAGS="$CXXFLAGS -fstack-protector-strong -mzero-caller-saved-regs "
+export SOURCE_DATE_EPOCH=1526013779
+export CFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
+export FCFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
+export FFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
+export CXXFLAGS="$CXXFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
 %configure --disable-static --enable-dynamic \
 --disable-debug \
 --enable-crypt \
@@ -110,7 +110,7 @@ export CXXFLAGS="$CXXFLAGS -fstack-protector-strong -mzero-caller-saved-regs "
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1522118464
+export SOURCE_DATE_EPOCH=1526013779
 rm -rf %{buildroot}
 %make_install
 mkdir -p %{buildroot}/usr/lib/tmpfiles.d
