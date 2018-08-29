@@ -1,3 +1,6 @@
+Configure miss: cc option to accept ISO C89
+Configure miss: dependency style of cc
+Configure miss: if cc supports -fno-rtti -fno-exceptions
 Configure miss: whether we are using MS Visual C++
 Configure miss: be_app in -lbe
 Configure miss: afopen in -ls
@@ -46,9 +49,6 @@ Configure miss: LinuxThreads consistency
 Configure miss: unicode/utypes.h usability
 Configure miss: unicode/utypes.h presence
 Configure miss: unicode/utypes.h
-Configure miss: sasl/sasl.h usability
-Configure miss: sasl/sasl.h presence
-Configure miss: sasl/sasl.h
 Configure miss: sasl.h usability
 Configure miss: sasl.h presence
 Configure miss: sasl.h

@@ -4,3 +4,4 @@ groff
 pkgconfig(uuid)
 openssl-dev
 db-dev
+cyrus-sasl-dev

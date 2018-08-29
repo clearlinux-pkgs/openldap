@@ -7,3 +7,10 @@
 --enable-overlays=mod
 --disable-ndb
 --disable-sql
+--with-tls=openssl
+--with-cyrus-sasl
+--enable-ipv6=yes
+--enable-lmpasswd
+--enable-spasswd
+--with-gnu-ld
+--with-pic

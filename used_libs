@@ -9,6 +9,7 @@ libnsl.so.1
 libperl.so
 libpthread.so.0
 libresolv.so.2
+libsasl2.so.3
 libssl.so.1.0.0
 libutil.so.1
 libuuid.so.1

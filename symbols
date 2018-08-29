@@ -248,6 +248,7 @@ libldap-2.4.so.2:ldap_get_values
 libldap-2.4.so.2:ldap_get_values_len
 libldap-2.4.so.2:ldap_gssapi_bind
 libldap-2.4.so.2:ldap_gssapi_bind_s
+libldap-2.4.so.2:ldap_host_connected_to
 libldap-2.4.so.2:ldap_init
 libldap-2.4.so.2:ldap_init_fd
 libldap-2.4.so.2:ldap_initialize
@@ -270,8 +271,12 @@ libldap-2.4.so.2:ldap_int_poll
 libldap-2.4.so.2:ldap_int_put_controls
 libldap-2.4.so.2:ldap_int_sasl_bind
 libldap-2.4.so.2:ldap_int_sasl_close
+libldap-2.4.so.2:ldap_int_sasl_config
 libldap-2.4.so.2:ldap_int_sasl_external
+libldap-2.4.so.2:ldap_int_sasl_get_option
 libldap-2.4.so.2:ldap_int_sasl_init
+libldap-2.4.so.2:ldap_int_sasl_open
+libldap-2.4.so.2:ldap_int_sasl_set_option
 libldap-2.4.so.2:ldap_int_select
 libldap-2.4.so.2:ldap_int_timeval_dup
 libldap-2.4.so.2:ldap_int_tls_config
@@ -370,6 +375,10 @@ libldap-2.4.so.2:ldap_pvt_put_filter
 libldap-2.4.so.2:ldap_pvt_sasl_generic_install
 libldap-2.4.so.2:ldap_pvt_sasl_generic_remove
 libldap-2.4.so.2:ldap_pvt_sasl_getmechs
+libldap-2.4.so.2:ldap_pvt_sasl_install
+libldap-2.4.so.2:ldap_pvt_sasl_remove
+libldap-2.4.so.2:ldap_pvt_sasl_secprops
+libldap-2.4.so.2:ldap_pvt_sasl_secprops_unparse
 libldap-2.4.so.2:ldap_pvt_scope2bv
 libldap-2.4.so.2:ldap_pvt_scope2str
 libldap-2.4.so.2:ldap_pvt_search
@@ -658,6 +667,7 @@ libldap_r-2.4.so.2:ldap_get_values
 libldap_r-2.4.so.2:ldap_get_values_len
 libldap_r-2.4.so.2:ldap_gssapi_bind
 libldap_r-2.4.so.2:ldap_gssapi_bind_s
+libldap_r-2.4.so.2:ldap_host_connected_to
 libldap_r-2.4.so.2:ldap_init
 libldap_r-2.4.so.2:ldap_init_fd
 libldap_r-2.4.so.2:ldap_initialize
@@ -680,8 +690,12 @@ libldap_r-2.4.so.2:ldap_int_poll
 libldap_r-2.4.so.2:ldap_int_put_controls
 libldap_r-2.4.so.2:ldap_int_sasl_bind
 libldap_r-2.4.so.2:ldap_int_sasl_close
+libldap_r-2.4.so.2:ldap_int_sasl_config
 libldap_r-2.4.so.2:ldap_int_sasl_external
+libldap_r-2.4.so.2:ldap_int_sasl_get_option
 libldap_r-2.4.so.2:ldap_int_sasl_init
+libldap_r-2.4.so.2:ldap_int_sasl_open
+libldap_r-2.4.so.2:ldap_int_sasl_set_option
 libldap_r-2.4.so.2:ldap_int_select
 libldap_r-2.4.so.2:ldap_int_thread_destroy
 libldap_r-2.4.so.2:ldap_int_thread_initialize
@@ -793,6 +807,14 @@ libldap_r-2.4.so.2:ldap_pvt_runqueue_stoptask
 libldap_r-2.4.so.2:ldap_pvt_sasl_generic_install
 libldap_r-2.4.so.2:ldap_pvt_sasl_generic_remove
 libldap_r-2.4.so.2:ldap_pvt_sasl_getmechs
+libldap_r-2.4.so.2:ldap_pvt_sasl_install
+libldap_r-2.4.so.2:ldap_pvt_sasl_mutex_dispose
+libldap_r-2.4.so.2:ldap_pvt_sasl_mutex_lock
+libldap_r-2.4.so.2:ldap_pvt_sasl_mutex_new
+libldap_r-2.4.so.2:ldap_pvt_sasl_mutex_unlock
+libldap_r-2.4.so.2:ldap_pvt_sasl_remove
+libldap_r-2.4.so.2:ldap_pvt_sasl_secprops
+libldap_r-2.4.so.2:ldap_pvt_sasl_secprops_unparse
 libldap_r-2.4.so.2:ldap_pvt_scope2bv
 libldap_r-2.4.so.2:ldap_pvt_scope2str
 libldap_r-2.4.so.2:ldap_pvt_search
