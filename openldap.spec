@@ -4,19 +4,20 @@
 #
 Name     : openldap
 Version  : 2.4.46
-Release  : 32
+Release  : 33
 URL      : http://www.openldap.org/software/download/OpenLDAP/openldap-release/openldap-2.4.46.tgz
 Source0  : http://www.openldap.org/software/download/OpenLDAP/openldap-release/openldap-2.4.46.tgz
 Source1  : openldap.tmpfiles
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : OLDAP-2.0.1 OLDAP-2.8 Zlib
-Requires: openldap-bin
-Requires: openldap-config
-Requires: openldap-lib
-Requires: openldap-license
-Requires: openldap-man
-Requires: openldap-data
+Requires: openldap-bin = %{version}-%{release}
+Requires: openldap-config = %{version}-%{release}
+Requires: openldap-data = %{version}-%{release}
+Requires: openldap-lib = %{version}-%{release}
+Requires: openldap-libexec = %{version}-%{release}
+Requires: openldap-license = %{version}-%{release}
+Requires: openldap-man = %{version}-%{release}
 BuildRequires : buildreq-configure
 BuildRequires : cyrus-sasl-dev
 BuildRequires : db-dev
@@ -32,13 +33,22 @@ ANNOUNCEMENT file in this directory.  For a description of
 changes from previous releases, see the CHANGES file in this
 directory.
 
+%package abi
+Summary: abi components for the openldap package.
+Group: Default
+
+%description abi
+abi components for the openldap package.
+
+
 %package bin
 Summary: bin components for the openldap package.
 Group: Binaries
-Requires: openldap-data
-Requires: openldap-config
-Requires: openldap-license
-Requires: openldap-man
+Requires: openldap-data = %{version}-%{release}
+Requires: openldap-libexec = %{version}-%{release}
+Requires: openldap-config = %{version}-%{release}
+Requires: openldap-license = %{version}-%{release}
+Requires: openldap-man = %{version}-%{release}
 
 %description bin
 bin components for the openldap package.
@@ -63,32 +73,34 @@ data components for the openldap package.
 %package dev
 Summary: dev components for the openldap package.
 Group: Development
-Requires: openldap-lib
-Requires: openldap-bin
-Requires: openldap-data
-Provides: openldap-devel
+Requires: openldap-lib = %{version}-%{release}
+Requires: openldap-bin = %{version}-%{release}
+Requires: openldap-data = %{version}-%{release}
+Provides: openldap-devel = %{version}-%{release}
 
 %description dev
 dev components for the openldap package.
 
 
-%package doc
-Summary: doc components for the openldap package.
-Group: Documentation
-Requires: openldap-man
-
-%description doc
-doc components for the openldap package.
-
-
 %package lib
 Summary: lib components for the openldap package.
 Group: Libraries
-Requires: openldap-data
-Requires: openldap-license
+Requires: openldap-data = %{version}-%{release}
+Requires: openldap-libexec = %{version}-%{release}
+Requires: openldap-license = %{version}-%{release}
 
 %description lib
 lib components for the openldap package.
+
+
+%package libexec
+Summary: libexec components for the openldap package.
+Group: Default
+Requires: openldap-config = %{version}-%{release}
+Requires: openldap-license = %{version}-%{release}
+
+%description libexec
+libexec components for the openldap package.
 
 
 %package license
@@ -116,7 +128,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1535574191
+export SOURCE_DATE_EPOCH=1542409917
 export CFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
 export FCFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
 export FFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
@@ -140,16 +152,16 @@ export CXXFLAGS="$CXXFLAGS -fstack-protector-strong -mzero-caller-saved-regs=use
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1535574191
+export SOURCE_DATE_EPOCH=1542409917
 rm -rf %{buildroot}
-mkdir -p %{buildroot}/usr/share/doc/openldap
-cp COPYRIGHT %{buildroot}/usr/share/doc/openldap/COPYRIGHT
-cp LICENSE %{buildroot}/usr/share/doc/openldap/LICENSE
-cp build/LICENSE-2.0.1 %{buildroot}/usr/share/doc/openldap/build_LICENSE-2.0.1
-cp doc/guide/release/license.sdf %{buildroot}/usr/share/doc/openldap/doc_guide_release_license.sdf
-cp libraries/liblmdb/COPYRIGHT %{buildroot}/usr/share/doc/openldap/libraries_liblmdb_COPYRIGHT
-cp libraries/liblmdb/LICENSE %{buildroot}/usr/share/doc/openldap/libraries_liblmdb_LICENSE
-cp libraries/librewrite/Copyright %{buildroot}/usr/share/doc/openldap/libraries_librewrite_Copyright
+mkdir -p %{buildroot}/usr/share/package-licenses/openldap
+cp COPYRIGHT %{buildroot}/usr/share/package-licenses/openldap/COPYRIGHT
+cp LICENSE %{buildroot}/usr/share/package-licenses/openldap/LICENSE
+cp build/LICENSE-2.0.1 %{buildroot}/usr/share/package-licenses/openldap/build_LICENSE-2.0.1
+cp doc/guide/release/license.sdf %{buildroot}/usr/share/package-licenses/openldap/doc_guide_release_license.sdf
+cp libraries/liblmdb/COPYRIGHT %{buildroot}/usr/share/package-licenses/openldap/libraries_liblmdb_COPYRIGHT
+cp libraries/liblmdb/LICENSE %{buildroot}/usr/share/package-licenses/openldap/libraries_liblmdb_LICENSE
+cp libraries/librewrite/Copyright %{buildroot}/usr/share/package-licenses/openldap/libraries_librewrite_Copyright
 %make_install
 mkdir -p %{buildroot}/usr/lib/tmpfiles.d
 install -m 0644 %{SOURCE1} %{buildroot}/usr/lib/tmpfiles.d/openldap.conf
@@ -157,6 +169,12 @@ install -m 0644 %{SOURCE1} %{buildroot}/usr/lib/tmpfiles.d/openldap.conf
 %files
 %defattr(-,root,root,-)
 %exclude /var/openldap-data/DB_CONFIG.example
+
+%files abi
+%defattr(-,root,root,-)
+/usr/share/abi/liblber-2.4.so.2.abi
+/usr/share/abi/libldap-2.4.so.2.abi
+/usr/share/abi/libldap_r-2.4.so.2.abi
 
 %files bin
 %defattr(-,root,root,-)
@@ -179,106 +197,6 @@ install -m 0644 %{SOURCE1} %{buildroot}/usr/lib/tmpfiles.d/openldap.conf
 /usr/bin/slappasswd
 /usr/bin/slapschema
 /usr/bin/slaptest
-/usr/libexec/openldap/accesslog-2.4.so.2
-/usr/libexec/openldap/accesslog-2.4.so.2.10.9
-/usr/libexec/openldap/accesslog.so
-/usr/libexec/openldap/auditlog-2.4.so.2
-/usr/libexec/openldap/auditlog-2.4.so.2.10.9
-/usr/libexec/openldap/auditlog.so
-/usr/libexec/openldap/back_bdb-2.4.so.2
-/usr/libexec/openldap/back_bdb-2.4.so.2.10.9
-/usr/libexec/openldap/back_bdb.so
-/usr/libexec/openldap/back_dnssrv-2.4.so.2
-/usr/libexec/openldap/back_dnssrv-2.4.so.2.10.9
-/usr/libexec/openldap/back_dnssrv.so
-/usr/libexec/openldap/back_hdb-2.4.so.2
-/usr/libexec/openldap/back_hdb-2.4.so.2.10.9
-/usr/libexec/openldap/back_hdb.so
-/usr/libexec/openldap/back_ldap-2.4.so.2
-/usr/libexec/openldap/back_ldap-2.4.so.2.10.9
-/usr/libexec/openldap/back_ldap.so
-/usr/libexec/openldap/back_mdb-2.4.so.2
-/usr/libexec/openldap/back_mdb-2.4.so.2.10.9
-/usr/libexec/openldap/back_mdb.so
-/usr/libexec/openldap/back_meta-2.4.so.2
-/usr/libexec/openldap/back_meta-2.4.so.2.10.9
-/usr/libexec/openldap/back_meta.so
-/usr/libexec/openldap/back_monitor-2.4.so.2
-/usr/libexec/openldap/back_monitor-2.4.so.2.10.9
-/usr/libexec/openldap/back_monitor.so
-/usr/libexec/openldap/back_null-2.4.so.2
-/usr/libexec/openldap/back_null-2.4.so.2.10.9
-/usr/libexec/openldap/back_null.so
-/usr/libexec/openldap/back_passwd-2.4.so.2
-/usr/libexec/openldap/back_passwd-2.4.so.2.10.9
-/usr/libexec/openldap/back_passwd.so
-/usr/libexec/openldap/back_perl-2.4.so.2
-/usr/libexec/openldap/back_perl-2.4.so.2.10.9
-/usr/libexec/openldap/back_perl.so
-/usr/libexec/openldap/back_relay-2.4.so.2
-/usr/libexec/openldap/back_relay-2.4.so.2.10.9
-/usr/libexec/openldap/back_relay.so
-/usr/libexec/openldap/back_shell-2.4.so.2
-/usr/libexec/openldap/back_shell-2.4.so.2.10.9
-/usr/libexec/openldap/back_shell.so
-/usr/libexec/openldap/back_sock-2.4.so.2
-/usr/libexec/openldap/back_sock-2.4.so.2.10.9
-/usr/libexec/openldap/back_sock.so
-/usr/libexec/openldap/collect-2.4.so.2
-/usr/libexec/openldap/collect-2.4.so.2.10.9
-/usr/libexec/openldap/collect.so
-/usr/libexec/openldap/constraint-2.4.so.2
-/usr/libexec/openldap/constraint-2.4.so.2.10.9
-/usr/libexec/openldap/constraint.so
-/usr/libexec/openldap/dds-2.4.so.2
-/usr/libexec/openldap/dds-2.4.so.2.10.9
-/usr/libexec/openldap/dds.so
-/usr/libexec/openldap/deref-2.4.so.2
-/usr/libexec/openldap/deref-2.4.so.2.10.9
-/usr/libexec/openldap/deref.so
-/usr/libexec/openldap/dyngroup-2.4.so.2
-/usr/libexec/openldap/dyngroup-2.4.so.2.10.9
-/usr/libexec/openldap/dyngroup.so
-/usr/libexec/openldap/dynlist-2.4.so.2
-/usr/libexec/openldap/dynlist-2.4.so.2.10.9
-/usr/libexec/openldap/dynlist.so
-/usr/libexec/openldap/memberof-2.4.so.2
-/usr/libexec/openldap/memberof-2.4.so.2.10.9
-/usr/libexec/openldap/memberof.so
-/usr/libexec/openldap/pcache-2.4.so.2
-/usr/libexec/openldap/pcache-2.4.so.2.10.9
-/usr/libexec/openldap/pcache.so
-/usr/libexec/openldap/ppolicy-2.4.so.2
-/usr/libexec/openldap/ppolicy-2.4.so.2.10.9
-/usr/libexec/openldap/ppolicy.so
-/usr/libexec/openldap/refint-2.4.so.2
-/usr/libexec/openldap/refint-2.4.so.2.10.9
-/usr/libexec/openldap/refint.so
-/usr/libexec/openldap/retcode-2.4.so.2
-/usr/libexec/openldap/retcode-2.4.so.2.10.9
-/usr/libexec/openldap/retcode.so
-/usr/libexec/openldap/rwm-2.4.so.2
-/usr/libexec/openldap/rwm-2.4.so.2.10.9
-/usr/libexec/openldap/rwm.so
-/usr/libexec/openldap/seqmod-2.4.so.2
-/usr/libexec/openldap/seqmod-2.4.so.2.10.9
-/usr/libexec/openldap/seqmod.so
-/usr/libexec/openldap/sssvlv-2.4.so.2
-/usr/libexec/openldap/sssvlv-2.4.so.2.10.9
-/usr/libexec/openldap/sssvlv.so
-/usr/libexec/openldap/syncprov-2.4.so.2
-/usr/libexec/openldap/syncprov-2.4.so.2.10.9
-/usr/libexec/openldap/syncprov.so
-/usr/libexec/openldap/translucent-2.4.so.2
-/usr/libexec/openldap/translucent-2.4.so.2.10.9
-/usr/libexec/openldap/translucent.so
-/usr/libexec/openldap/unique-2.4.so.2
-/usr/libexec/openldap/unique-2.4.so.2.10.9
-/usr/libexec/openldap/unique.so
-/usr/libexec/openldap/valsort-2.4.so.2
-/usr/libexec/openldap/valsort-2.4.so.2.10.9
-/usr/libexec/openldap/valsort.so
-/usr/libexec/slapd
 
 %files config
 %defattr(-,root,root,-)
@@ -316,15 +234,7 @@ install -m 0644 %{SOURCE1} %{buildroot}/usr/lib/tmpfiles.d/openldap.conf
 
 %files dev
 %defattr(-,root,root,-)
-/usr/include/lber.h
-/usr/include/lber_types.h
-/usr/include/ldap.h
-/usr/include/ldap_cdefs.h
-/usr/include/ldap_features.h
-/usr/include/ldap_schema.h
-/usr/include/ldap_utf8.h
-/usr/include/ldif.h
-/usr/include/slapi-plugin.h
+/usr/include/*.h
 /usr/lib64/liblber.so
 /usr/lib64/libldap.so
 /usr/lib64/libldap_r.so
@@ -511,10 +421,6 @@ install -m 0644 %{SOURCE1} %{buildroot}/usr/lib/tmpfiles.d/openldap.conf
 /usr/share/man/man3/ldap_value_free.3
 /usr/share/man/man3/ldap_value_free_len.3
 
-%files doc
-%defattr(0644,root,root,0755)
-%doc /usr/share/doc/openldap/libraries_librewrite_Copyright
-
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/liblber-2.4.so.2
@@ -524,17 +430,121 @@ install -m 0644 %{SOURCE1} %{buildroot}/usr/lib/tmpfiles.d/openldap.conf
 /usr/lib64/libldap_r-2.4.so.2
 /usr/lib64/libldap_r-2.4.so.2.10.9
 
-%files license
+%files libexec
 %defattr(-,root,root,-)
-/usr/share/doc/openldap/COPYRIGHT
-/usr/share/doc/openldap/LICENSE
-/usr/share/doc/openldap/build_LICENSE-2.0.1
-/usr/share/doc/openldap/doc_guide_release_license.sdf
-/usr/share/doc/openldap/libraries_liblmdb_COPYRIGHT
-/usr/share/doc/openldap/libraries_liblmdb_LICENSE
+/usr/libexec/openldap/accesslog-2.4.so.2
+/usr/libexec/openldap/accesslog-2.4.so.2.10.9
+/usr/libexec/openldap/accesslog.so
+/usr/libexec/openldap/auditlog-2.4.so.2
+/usr/libexec/openldap/auditlog-2.4.so.2.10.9
+/usr/libexec/openldap/auditlog.so
+/usr/libexec/openldap/back_bdb-2.4.so.2
+/usr/libexec/openldap/back_bdb-2.4.so.2.10.9
+/usr/libexec/openldap/back_bdb.so
+/usr/libexec/openldap/back_dnssrv-2.4.so.2
+/usr/libexec/openldap/back_dnssrv-2.4.so.2.10.9
+/usr/libexec/openldap/back_dnssrv.so
+/usr/libexec/openldap/back_hdb-2.4.so.2
+/usr/libexec/openldap/back_hdb-2.4.so.2.10.9
+/usr/libexec/openldap/back_hdb.so
+/usr/libexec/openldap/back_ldap-2.4.so.2
+/usr/libexec/openldap/back_ldap-2.4.so.2.10.9
+/usr/libexec/openldap/back_ldap.so
+/usr/libexec/openldap/back_mdb-2.4.so.2
+/usr/libexec/openldap/back_mdb-2.4.so.2.10.9
+/usr/libexec/openldap/back_mdb.so
+/usr/libexec/openldap/back_meta-2.4.so.2
+/usr/libexec/openldap/back_meta-2.4.so.2.10.9
+/usr/libexec/openldap/back_meta.so
+/usr/libexec/openldap/back_monitor-2.4.so.2
+/usr/libexec/openldap/back_monitor-2.4.so.2.10.9
+/usr/libexec/openldap/back_monitor.so
+/usr/libexec/openldap/back_null-2.4.so.2
+/usr/libexec/openldap/back_null-2.4.so.2.10.9
+/usr/libexec/openldap/back_null.so
+/usr/libexec/openldap/back_passwd-2.4.so.2
+/usr/libexec/openldap/back_passwd-2.4.so.2.10.9
+/usr/libexec/openldap/back_passwd.so
+/usr/libexec/openldap/back_perl-2.4.so.2
+/usr/libexec/openldap/back_perl-2.4.so.2.10.9
+/usr/libexec/openldap/back_perl.so
+/usr/libexec/openldap/back_relay-2.4.so.2
+/usr/libexec/openldap/back_relay-2.4.so.2.10.9
+/usr/libexec/openldap/back_relay.so
+/usr/libexec/openldap/back_shell-2.4.so.2
+/usr/libexec/openldap/back_shell-2.4.so.2.10.9
+/usr/libexec/openldap/back_shell.so
+/usr/libexec/openldap/back_sock-2.4.so.2
+/usr/libexec/openldap/back_sock-2.4.so.2.10.9
+/usr/libexec/openldap/back_sock.so
+/usr/libexec/openldap/collect-2.4.so.2
+/usr/libexec/openldap/collect-2.4.so.2.10.9
+/usr/libexec/openldap/collect.so
+/usr/libexec/openldap/constraint-2.4.so.2
+/usr/libexec/openldap/constraint-2.4.so.2.10.9
+/usr/libexec/openldap/constraint.so
+/usr/libexec/openldap/dds-2.4.so.2
+/usr/libexec/openldap/dds-2.4.so.2.10.9
+/usr/libexec/openldap/dds.so
+/usr/libexec/openldap/deref-2.4.so.2
+/usr/libexec/openldap/deref-2.4.so.2.10.9
+/usr/libexec/openldap/deref.so
+/usr/libexec/openldap/dyngroup-2.4.so.2
+/usr/libexec/openldap/dyngroup-2.4.so.2.10.9
+/usr/libexec/openldap/dyngroup.so
+/usr/libexec/openldap/dynlist-2.4.so.2
+/usr/libexec/openldap/dynlist-2.4.so.2.10.9
+/usr/libexec/openldap/dynlist.so
+/usr/libexec/openldap/memberof-2.4.so.2
+/usr/libexec/openldap/memberof-2.4.so.2.10.9
+/usr/libexec/openldap/memberof.so
+/usr/libexec/openldap/pcache-2.4.so.2
+/usr/libexec/openldap/pcache-2.4.so.2.10.9
+/usr/libexec/openldap/pcache.so
+/usr/libexec/openldap/ppolicy-2.4.so.2
+/usr/libexec/openldap/ppolicy-2.4.so.2.10.9
+/usr/libexec/openldap/ppolicy.so
+/usr/libexec/openldap/refint-2.4.so.2
+/usr/libexec/openldap/refint-2.4.so.2.10.9
+/usr/libexec/openldap/refint.so
+/usr/libexec/openldap/retcode-2.4.so.2
+/usr/libexec/openldap/retcode-2.4.so.2.10.9
+/usr/libexec/openldap/retcode.so
+/usr/libexec/openldap/rwm-2.4.so.2
+/usr/libexec/openldap/rwm-2.4.so.2.10.9
+/usr/libexec/openldap/rwm.so
+/usr/libexec/openldap/seqmod-2.4.so.2
+/usr/libexec/openldap/seqmod-2.4.so.2.10.9
+/usr/libexec/openldap/seqmod.so
+/usr/libexec/openldap/sssvlv-2.4.so.2
+/usr/libexec/openldap/sssvlv-2.4.so.2.10.9
+/usr/libexec/openldap/sssvlv.so
+/usr/libexec/openldap/syncprov-2.4.so.2
+/usr/libexec/openldap/syncprov-2.4.so.2.10.9
+/usr/libexec/openldap/syncprov.so
+/usr/libexec/openldap/translucent-2.4.so.2
+/usr/libexec/openldap/translucent-2.4.so.2.10.9
+/usr/libexec/openldap/translucent.so
+/usr/libexec/openldap/unique-2.4.so.2
+/usr/libexec/openldap/unique-2.4.so.2.10.9
+/usr/libexec/openldap/unique.so
+/usr/libexec/openldap/valsort-2.4.so.2
+/usr/libexec/openldap/valsort-2.4.so.2.10.9
+/usr/libexec/openldap/valsort.so
+/usr/libexec/slapd
+
+%files license
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/openldap/COPYRIGHT
+/usr/share/package-licenses/openldap/LICENSE
+/usr/share/package-licenses/openldap/build_LICENSE-2.0.1
+/usr/share/package-licenses/openldap/doc_guide_release_license.sdf
+/usr/share/package-licenses/openldap/libraries_liblmdb_COPYRIGHT
+/usr/share/package-licenses/openldap/libraries_liblmdb_LICENSE
+/usr/share/package-licenses/openldap/libraries_librewrite_Copyright
 
 %files man
-%defattr(-,root,root,-)
+%defattr(0644,root,root,0755)
 /usr/share/man/man1/ldapadd.1
 /usr/share/man/man1/ldapcompare.1
 /usr/share/man/man1/ldapdelete.1

@@ -1,6 +1,3 @@
-Configure miss: cc option to accept ISO C89
-Configure miss: dependency style of cc
-Configure miss: if cc supports -fno-rtti -fno-exceptions
 Configure miss: whether we are using MS Visual C++
 Configure miss: be_app in -lbe
 Configure miss: afopen in -ls
