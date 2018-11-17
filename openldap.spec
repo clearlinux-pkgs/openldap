@@ -4,7 +4,7 @@
 #
 Name     : openldap
 Version  : 2.4.46
-Release  : 33
+Release  : 34
 URL      : http://www.openldap.org/software/download/OpenLDAP/openldap-release/openldap-2.4.46.tgz
 Source0  : http://www.openldap.org/software/download/OpenLDAP/openldap-release/openldap-2.4.46.tgz
 Source1  : openldap.tmpfiles
@@ -32,14 +32,6 @@ For a description of what this distribution contains, see the
 ANNOUNCEMENT file in this directory.  For a description of
 changes from previous releases, see the CHANGES file in this
 directory.
-
-%package abi
-Summary: abi components for the openldap package.
-Group: Default
-
-%description abi
-abi components for the openldap package.
-
 
 %package bin
 Summary: bin components for the openldap package.
@@ -80,6 +72,14 @@ Provides: openldap-devel = %{version}-%{release}
 
 %description dev
 dev components for the openldap package.
+
+
+%package extras
+Summary: extras components for the openldap package.
+Group: Default
+
+%description extras
+extras components for the openldap package.
 
 
 %package lib
@@ -128,7 +128,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1542409917
+export SOURCE_DATE_EPOCH=1542443109
 export CFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
 export FCFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
 export FFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
@@ -152,7 +152,7 @@ export CXXFLAGS="$CXXFLAGS -fstack-protector-strong -mzero-caller-saved-regs=use
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1542409917
+export SOURCE_DATE_EPOCH=1542443109
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/openldap
 cp COPYRIGHT %{buildroot}/usr/share/package-licenses/openldap/COPYRIGHT
@@ -169,12 +169,6 @@ install -m 0644 %{SOURCE1} %{buildroot}/usr/lib/tmpfiles.d/openldap.conf
 %files
 %defattr(-,root,root,-)
 %exclude /var/openldap-data/DB_CONFIG.example
-
-%files abi
-%defattr(-,root,root,-)
-/usr/share/abi/liblber-2.4.so.2.abi
-/usr/share/abi/libldap-2.4.so.2.abi
-/usr/share/abi/libldap_r-2.4.so.2.abi
 
 %files bin
 %defattr(-,root,root,-)
@@ -421,6 +415,12 @@ install -m 0644 %{SOURCE1} %{buildroot}/usr/lib/tmpfiles.d/openldap.conf
 /usr/share/man/man3/ldap_value_free.3
 /usr/share/man/man3/ldap_value_free_len.3
 
+%files extras
+%defattr(-,root,root,-)
+/usr/libexec/openldap/back_perl-2.4.so.2
+/usr/libexec/openldap/back_perl-2.4.so.2.10.9
+/usr/libexec/openldap/back_perl.so
+
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/liblber-2.4.so.2
@@ -432,6 +432,9 @@ install -m 0644 %{SOURCE1} %{buildroot}/usr/lib/tmpfiles.d/openldap.conf
 
 %files libexec
 %defattr(-,root,root,-)
+%exclude /usr/libexec/openldap/back_perl-2.4.so.2
+%exclude /usr/libexec/openldap/back_perl-2.4.so.2.10.9
+%exclude /usr/libexec/openldap/back_perl.so
 /usr/libexec/openldap/accesslog-2.4.so.2
 /usr/libexec/openldap/accesslog-2.4.so.2.10.9
 /usr/libexec/openldap/accesslog.so
@@ -465,9 +468,6 @@ install -m 0644 %{SOURCE1} %{buildroot}/usr/lib/tmpfiles.d/openldap.conf
 /usr/libexec/openldap/back_passwd-2.4.so.2
 /usr/libexec/openldap/back_passwd-2.4.so.2.10.9
 /usr/libexec/openldap/back_passwd.so
-/usr/libexec/openldap/back_perl-2.4.so.2
-/usr/libexec/openldap/back_perl-2.4.so.2.10.9
-/usr/libexec/openldap/back_perl.so
 /usr/libexec/openldap/back_relay-2.4.so.2
 /usr/libexec/openldap/back_relay-2.4.so.2.10.9
 /usr/libexec/openldap/back_relay.so
