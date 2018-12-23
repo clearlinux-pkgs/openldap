@@ -4,7 +4,7 @@
 #
 Name     : openldap
 Version  : 2.4.47
-Release  : 35
+Release  : 36
 URL      : http://www.openldap.org/software/download/OpenLDAP/openldap-release/openldap-2.4.47.tgz
 Source0  : http://www.openldap.org/software/download/OpenLDAP/openldap-release/openldap-2.4.47.tgz
 Source1  : openldap.tmpfiles
@@ -128,7 +128,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1545508084
+export SOURCE_DATE_EPOCH=1545602825
 export CFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
 export FCFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
 export FFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
@@ -152,7 +152,7 @@ export CXXFLAGS="$CXXFLAGS -fstack-protector-strong -mzero-caller-saved-regs=use
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1545508084
+export SOURCE_DATE_EPOCH=1545602825
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/openldap
 cp COPYRIGHT %{buildroot}/usr/share/package-licenses/openldap/COPYRIGHT
@@ -418,6 +418,7 @@ install -m 0644 %{SOURCE1} %{buildroot}/usr/lib/tmpfiles.d/openldap.conf
 %files extras
 %defattr(-,root,root,-)
 /usr/libexec/openldap/back_perl-2.4.so.2
+/usr/libexec/openldap/back_perl-2.4.so.2.10.10
 /usr/libexec/openldap/back_perl.so
 
 %files lib
@@ -432,6 +433,7 @@ install -m 0644 %{SOURCE1} %{buildroot}/usr/lib/tmpfiles.d/openldap.conf
 %files libexec
 %defattr(-,root,root,-)
 %exclude /usr/libexec/openldap/back_perl-2.4.so.2
+%exclude /usr/libexec/openldap/back_perl-2.4.so.2.10.10
 %exclude /usr/libexec/openldap/back_perl.so
 /usr/libexec/openldap/accesslog-2.4.so.2
 /usr/libexec/openldap/accesslog-2.4.so.2.10.10
@@ -466,7 +468,6 @@ install -m 0644 %{SOURCE1} %{buildroot}/usr/lib/tmpfiles.d/openldap.conf
 /usr/libexec/openldap/back_passwd-2.4.so.2
 /usr/libexec/openldap/back_passwd-2.4.so.2.10.10
 /usr/libexec/openldap/back_passwd.so
-/usr/libexec/openldap/back_perl-2.4.so.2.10.10
 /usr/libexec/openldap/back_relay-2.4.so.2
 /usr/libexec/openldap/back_relay-2.4.so.2.10.10
 /usr/libexec/openldap/back_relay.so
