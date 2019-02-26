@@ -1,7 +1,6 @@
 libc.so.6
 libcrypt.so.1
 libcrypto.so.1.1
-libdb-5.3.so
 libdl.so.2
 libltdl.so.7
 libm.so.6

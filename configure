@@ -14,3 +14,5 @@
 --enable-spasswd
 --with-gnu-ld
 --with-pic
+--disable-bdb
+--disable-hdb

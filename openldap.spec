@@ -4,7 +4,7 @@
 #
 Name     : openldap
 Version  : 2.4.47
-Release  : 37
+Release  : 38
 URL      : http://www.openldap.org/software/download/OpenLDAP/openldap-release/openldap-2.4.47.tgz
 Source0  : http://www.openldap.org/software/download/OpenLDAP/openldap-release/openldap-2.4.47.tgz
 Source1  : openldap.tmpfiles
@@ -20,7 +20,6 @@ Requires: openldap-license = %{version}-%{release}
 Requires: openldap-man = %{version}-%{release}
 BuildRequires : buildreq-configure
 BuildRequires : cyrus-sasl-dev
-BuildRequires : db-dev
 BuildRequires : groff
 BuildRequires : openssl-dev
 BuildRequires : pkgconfig(uuid)
@@ -28,10 +27,12 @@ Patch1: schemadir.patch
 Patch2: cve-2017-14159.nopatch
 
 %description
-For a description of what this distribution contains, see the
-ANNOUNCEMENT file in this directory.  For a description of
-changes from previous releases, see the CHANGES file in this
-directory.
+MUTT UCData Package 2.5
+-----------------------
+This is a package that supports ctype-like operations for Unicode UCS-2 text
+(and surrogates), case mapping, decomposition lookup, and provides a
+bidirectional reordering algorithm.  To use it, you will need to get the
+latest "UnicodeData-*.txt" (or later) file from the Unicode Web or FTP site.
 
 %package bin
 Summary: bin components for the openldap package.
@@ -40,7 +41,6 @@ Requires: openldap-data = %{version}-%{release}
 Requires: openldap-libexec = %{version}-%{release}
 Requires: openldap-config = %{version}-%{release}
 Requires: openldap-license = %{version}-%{release}
-Requires: openldap-man = %{version}-%{release}
 
 %description bin
 bin components for the openldap package.
@@ -68,7 +68,9 @@ Group: Development
 Requires: openldap-lib = %{version}-%{release}
 Requires: openldap-bin = %{version}-%{release}
 Requires: openldap-data = %{version}-%{release}
+Requires: openldap-man = %{version}-%{release}
 Provides: openldap-devel = %{version}-%{release}
+Requires: openldap = %{version}-%{release}
 
 %description dev
 dev components for the openldap package.
@@ -128,7 +130,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1545602825
+export SOURCE_DATE_EPOCH=1551154344
 export CFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
 export FCFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
 export FFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
@@ -148,11 +150,13 @@ export CXXFLAGS="$CXXFLAGS -fstack-protector-strong -mzero-caller-saved-regs=use
 --enable-lmpasswd \
 --enable-spasswd \
 --with-gnu-ld \
---with-pic
+--with-pic \
+--disable-bdb \
+--disable-hdb
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1545602825
+export SOURCE_DATE_EPOCH=1551154344
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/openldap
 cp COPYRIGHT %{buildroot}/usr/share/package-licenses/openldap/COPYRIGHT
@@ -168,7 +172,6 @@ install -m 0644 %{SOURCE1} %{buildroot}/usr/lib/tmpfiles.d/openldap.conf
 
 %files
 %defattr(-,root,root,-)
-%exclude /var/openldap-data/DB_CONFIG.example
 
 %files bin
 %defattr(-,root,root,-)
@@ -441,15 +444,9 @@ install -m 0644 %{SOURCE1} %{buildroot}/usr/lib/tmpfiles.d/openldap.conf
 /usr/libexec/openldap/auditlog-2.4.so.2
 /usr/libexec/openldap/auditlog-2.4.so.2.10.10
 /usr/libexec/openldap/auditlog.so
-/usr/libexec/openldap/back_bdb-2.4.so.2
-/usr/libexec/openldap/back_bdb-2.4.so.2.10.10
-/usr/libexec/openldap/back_bdb.so
 /usr/libexec/openldap/back_dnssrv-2.4.so.2
 /usr/libexec/openldap/back_dnssrv-2.4.so.2.10.10
 /usr/libexec/openldap/back_dnssrv.so
-/usr/libexec/openldap/back_hdb-2.4.so.2
-/usr/libexec/openldap/back_hdb-2.4.so.2.10.10
-/usr/libexec/openldap/back_hdb.so
 /usr/libexec/openldap/back_ldap-2.4.so.2
 /usr/libexec/openldap/back_ldap-2.4.so.2.10.10
 /usr/libexec/openldap/back_ldap.so
