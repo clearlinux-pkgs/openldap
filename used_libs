@@ -1,14 +1,9 @@
 libc.so.6
 libcrypt.so.1
 libcrypto.so.1.1
-libdl.so.2
 libltdl.so.7
-libm.so.6
-libnsl.so.1
-libperl.so
 libpthread.so.0
 libresolv.so.2
 libsasl2.so.3
 libssl.so.1.1
-libutil.so.1
 libuuid.so.1

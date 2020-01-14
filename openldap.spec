@@ -4,7 +4,7 @@
 #
 Name     : openldap
 Version  : 2.4.48
-Release  : 40
+Release  : 41
 URL      : http://www.openldap.org/software/download/OpenLDAP/openldap-release/openldap-2.4.48.tgz
 Source0  : http://www.openldap.org/software/download/OpenLDAP/openldap-release/openldap-2.4.48.tgz
 Source1  : openldap.tmpfiles
@@ -27,10 +27,12 @@ Patch1: schemadir.patch
 Patch2: cve-2017-14159.nopatch
 
 %description
-For a description of what this distribution contains, see the
-ANNOUNCEMENT file in this directory.  For a description of
-changes from previous releases, see the CHANGES file in this
-directory.
+MUTT UCData Package 2.5
+-----------------------
+This is a package that supports ctype-like operations for Unicode UCS-2 text
+(and surrogates), case mapping, decomposition lookup, and provides a
+bidirectional reordering algorithm.  To use it, you will need to get the
+latest "UnicodeData-*.txt" (or later) file from the Unicode Web or FTP site.
 
 %package bin
 Summary: bin components for the openldap package.
@@ -67,6 +69,7 @@ Requires: openldap-lib = %{version}-%{release}
 Requires: openldap-bin = %{version}-%{release}
 Requires: openldap-data = %{version}-%{release}
 Provides: openldap-devel = %{version}-%{release}
+Requires: openldap = %{version}-%{release}
 Requires: openldap = %{version}-%{release}
 
 %description dev
@@ -120,6 +123,7 @@ man components for the openldap package.
 
 %prep
 %setup -q -n openldap-2.4.48
+cd %{_builddir}/openldap-2.4.48
 %patch1 -p1
 
 %build
@@ -127,12 +131,13 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1564435462
+export SOURCE_DATE_EPOCH=1579020916
+# -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
-export CFLAGS="$CFLAGS -fno-lto -fstack-protector-strong -mzero-caller-saved-regs=used "
-export FCFLAGS="$CFLAGS -fno-lto -fstack-protector-strong -mzero-caller-saved-regs=used "
-export FFLAGS="$CFLAGS -fno-lto -fstack-protector-strong -mzero-caller-saved-regs=used "
-export CXXFLAGS="$CXXFLAGS -fno-lto -fstack-protector-strong -mzero-caller-saved-regs=used "
+export CFLAGS="$CFLAGS -fcf-protection=full -fno-lto -fstack-protector-strong "
+export FCFLAGS="$CFLAGS -fcf-protection=full -fno-lto -fstack-protector-strong "
+export FFLAGS="$CFLAGS -fcf-protection=full -fno-lto -fstack-protector-strong "
+export CXXFLAGS="$CXXFLAGS -fcf-protection=full -fno-lto -fstack-protector-strong "
 %configure --disable-static --enable-dynamic \
 --disable-debug \
 --enable-crypt \
@@ -154,17 +159,27 @@ export CXXFLAGS="$CXXFLAGS -fno-lto -fstack-protector-strong -mzero-caller-saved
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1564435462
+export SOURCE_DATE_EPOCH=1579020916
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/openldap
-cp LICENSE %{buildroot}/usr/share/package-licenses/openldap/LICENSE
-cp build/LICENSE-2.0.1 %{buildroot}/usr/share/package-licenses/openldap/build_LICENSE-2.0.1
-cp libraries/liblmdb/COPYRIGHT %{buildroot}/usr/share/package-licenses/openldap/libraries_liblmdb_COPYRIGHT
-cp libraries/liblmdb/LICENSE %{buildroot}/usr/share/package-licenses/openldap/libraries_liblmdb_LICENSE
-cp libraries/librewrite/Copyright %{buildroot}/usr/share/package-licenses/openldap/libraries_librewrite_Copyright
+cp %{_builddir}/openldap-2.4.48/COPYRIGHT %{buildroot}/usr/share/package-licenses/openldap/238e5c6a090985fb9a6cd40fbe5bb2de90dba7cf
+cp %{_builddir}/openldap-2.4.48/LICENSE %{buildroot}/usr/share/package-licenses/openldap/bc06cbdf781c87d2df2fe385214f936d010dd2a2
+cp %{_builddir}/openldap-2.4.48/build/LICENSE-2.0.1 %{buildroot}/usr/share/package-licenses/openldap/09fc2e9f527fcb0d594bc658d21e42d3a5124b83
+cp %{_builddir}/openldap-2.4.48/libraries/liblmdb/COPYRIGHT %{buildroot}/usr/share/package-licenses/openldap/b74295898da7a6c7b73cb516f4b5fdb1ea641e52
+cp %{_builddir}/openldap-2.4.48/libraries/liblmdb/LICENSE %{buildroot}/usr/share/package-licenses/openldap/bc06cbdf781c87d2df2fe385214f936d010dd2a2
+cp %{_builddir}/openldap-2.4.48/libraries/librewrite/Copyright %{buildroot}/usr/share/package-licenses/openldap/0da054d8429802e25641decec43d4fbc1fbe4f2f
 %make_install
 mkdir -p %{buildroot}/usr/lib/tmpfiles.d
 install -m 0644 %{SOURCE1} %{buildroot}/usr/lib/tmpfiles.d/openldap.conf
+## Remove excluded files
+rm -f %{buildroot}/etc/openldap/ldap.conf
+rm -f %{buildroot}/etc/openldap/ldap.conf.default
+rm -f %{buildroot}/etc/openldap/DB_CONFIG.example
+rm -f %{buildroot}/etc/openldap/slapd.conf
+rm -f %{buildroot}/etc/openldap/slapd.conf.default
+rm -f %{buildroot}/etc/openldap/slapd.ldif
+rm -f %{buildroot}/etc/openldap/slapd.ldif.default
+rm -f %{buildroot}/var/openldap-data/DB_CONFIG.example
 
 %files
 %defattr(-,root,root,-)
@@ -227,7 +242,16 @@ install -m 0644 %{SOURCE1} %{buildroot}/usr/lib/tmpfiles.d/openldap.conf
 
 %files dev
 %defattr(-,root,root,-)
-/usr/include/*.h
+/usr/include/lber.h
+/usr/include/lber_types.h
+/usr/include/ldap.h
+/usr/include/ldap_cdefs.h
+/usr/include/ldap_features.h
+/usr/include/ldap_schema.h
+/usr/include/ldap_utf8.h
+/usr/include/ldif.h
+/usr/include/openldap.h
+/usr/include/slapi-plugin.h
 /usr/lib64/liblber.so
 /usr/lib64/libldap.so
 /usr/lib64/libldap_r.so
@@ -417,6 +441,7 @@ install -m 0644 %{SOURCE1} %{buildroot}/usr/lib/tmpfiles.d/openldap.conf
 %files extras
 %defattr(-,root,root,-)
 /usr/libexec/openldap/back_perl-2.4.so.2
+/usr/libexec/openldap/back_perl-2.4.so.2.10.11
 /usr/libexec/openldap/back_perl.so
 
 %files lib
@@ -430,8 +455,6 @@ install -m 0644 %{SOURCE1} %{buildroot}/usr/lib/tmpfiles.d/openldap.conf
 
 %files libexec
 %defattr(-,root,root,-)
-%exclude /usr/libexec/openldap/back_perl-2.4.so.2
-%exclude /usr/libexec/openldap/back_perl.so
 /usr/libexec/openldap/accesslog-2.4.so.2
 /usr/libexec/openldap/accesslog-2.4.so.2.10.11
 /usr/libexec/openldap/accesslog.so
@@ -459,7 +482,6 @@ install -m 0644 %{SOURCE1} %{buildroot}/usr/lib/tmpfiles.d/openldap.conf
 /usr/libexec/openldap/back_passwd-2.4.so.2
 /usr/libexec/openldap/back_passwd-2.4.so.2.10.11
 /usr/libexec/openldap/back_passwd.so
-/usr/libexec/openldap/back_perl-2.4.so.2.10.11
 /usr/libexec/openldap/back_relay-2.4.so.2
 /usr/libexec/openldap/back_relay-2.4.so.2.10.11
 /usr/libexec/openldap/back_relay.so
@@ -527,11 +549,11 @@ install -m 0644 %{SOURCE1} %{buildroot}/usr/lib/tmpfiles.d/openldap.conf
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/openldap/LICENSE
-/usr/share/package-licenses/openldap/build_LICENSE-2.0.1
-/usr/share/package-licenses/openldap/libraries_liblmdb_COPYRIGHT
-/usr/share/package-licenses/openldap/libraries_liblmdb_LICENSE
-/usr/share/package-licenses/openldap/libraries_librewrite_Copyright
+/usr/share/package-licenses/openldap/09fc2e9f527fcb0d594bc658d21e42d3a5124b83
+/usr/share/package-licenses/openldap/0da054d8429802e25641decec43d4fbc1fbe4f2f
+/usr/share/package-licenses/openldap/238e5c6a090985fb9a6cd40fbe5bb2de90dba7cf
+/usr/share/package-licenses/openldap/b74295898da7a6c7b73cb516f4b5fdb1ea641e52
+/usr/share/package-licenses/openldap/bc06cbdf781c87d2df2fe385214f936d010dd2a2
 
 %files man
 %defattr(0644,root,root,0755)
