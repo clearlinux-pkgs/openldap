@@ -43,9 +43,6 @@ Configure miss: thr_getconcurrency
 Configure miss: pthread_kill_other_threads_np
 Configure miss: LinuxThreads implementation
 Configure miss: LinuxThreads consistency
-Configure miss: unicode/utypes.h usability
-Configure miss: unicode/utypes.h presence
-Configure miss: unicode/utypes.h
 Configure miss: sasl.h usability
 Configure miss: sasl.h presence
 Configure miss: sasl.h
