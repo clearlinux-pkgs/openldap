@@ -1,5 +1,5 @@
 PKG_NAME := openldap
-URL = https://www.openldap.org/software/download/OpenLDAP/openldap-release/openldap-2.4.50.tgz
+URL = https://www.openldap.org/software/download/OpenLDAP/openldap-release/openldap-2.4.52.tgz
 ARCHIVES = 
 
 include ../common/Makefile.common
