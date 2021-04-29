@@ -4,7 +4,7 @@
 #
 Name     : openldap
 Version  : 2.4.58
-Release  : 52
+Release  : 53
 URL      : https://www.openldap.org/software/download/OpenLDAP/openldap-release/openldap-2.4.58.tgz
 Source0  : https://www.openldap.org/software/download/OpenLDAP/openldap-release/openldap-2.4.58.tgz
 Source1  : openldap.tmpfiles
@@ -129,10 +129,10 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
 export SOURCE_DATE_EPOCH=1615928237
 export GCC_IGNORE_WERROR=1
-export CFLAGS="$CFLAGS -fno-lto -fstack-protector-strong -mzero-caller-saved-regs=used "
-export FCFLAGS="$FFLAGS -fno-lto -fstack-protector-strong -mzero-caller-saved-regs=used "
-export FFLAGS="$FFLAGS -fno-lto -fstack-protector-strong -mzero-caller-saved-regs=used "
-export CXXFLAGS="$CXXFLAGS -fno-lto -fstack-protector-strong -mzero-caller-saved-regs=used "
+export CFLAGS="$CFLAGS -fno-lto -fstack-protector-strong -fzero-call-used-regs=used "
+export FCFLAGS="$FFLAGS -fno-lto -fstack-protector-strong -fzero-call-used-regs=used "
+export FFLAGS="$FFLAGS -fno-lto -fstack-protector-strong -fzero-call-used-regs=used "
+export CXXFLAGS="$CXXFLAGS -fno-lto -fstack-protector-strong -fzero-call-used-regs=used "
 %configure --disable-static --enable-dynamic \
 --disable-debug \
 --enable-crypt \
