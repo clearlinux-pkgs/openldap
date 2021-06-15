@@ -12,8 +12,10 @@ Configure miss: conio.h
 Configure miss: conio.h presence
 Configure miss: conio.h usability
 Configure miss: crypt
+Configure miss: declaration of sys_errlist
 Configure miss: direct.h presence
 Configure miss: direct.h usability
+Configure miss: existence of sys_errlist
 Configure miss: fetch(3) library
 Configure miss: filio.h
 Configure miss: filio.h presence
