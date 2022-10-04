@@ -29,10 +29,8 @@ Configure miss: process.h usability
 Configure miss: psap.h
 Configure miss: psap.h presence
 Configure miss: psap.h usability
-Configure miss: pthread link with -kthread
-Configure miss: pthread_create in default libraries
 Configure miss: pthread_kill_other_threads_np
-Configure miss: resolver link (default)
+Configure miss: pthread_yield
 Configure miss: sasl.h
 Configure miss: sasl.h presence
 Configure miss: sasl.h usability
