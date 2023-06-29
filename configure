@@ -16,3 +16,4 @@
 --with-pic
 --disable-bdb
 --disable-hdb
+--disable-wt
