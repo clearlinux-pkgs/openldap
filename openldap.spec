@@ -7,7 +7,7 @@
 #
 Name     : openldap
 Version  : 2.6.4
-Release  : 59
+Release  : 60
 URL      : https://www.openldap.org/software/download/OpenLDAP/openldap-release/openldap-2.6.4.tgz
 Source0  : https://www.openldap.org/software/download/OpenLDAP/openldap-release/openldap-2.6.4.tgz
 Source1  : openldap.tmpfiles
@@ -33,6 +33,7 @@ BuildRequires : systemd-dev
 %define __strip /bin/true
 %define debug_package %{nil}
 Patch1: 0001-stateless.patch
+Patch2: service.patch
 
 %description
 For a description of what this distribution contains, see the
@@ -140,13 +141,14 @@ services components for the openldap package.
 %setup -q -n openldap-2.6.4
 cd %{_builddir}/openldap-2.6.4
 %patch -P 1 -p1
+%patch -P 2 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1688083944
+export SOURCE_DATE_EPOCH=1688137122
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
 export FCFLAGS="$FFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
@@ -174,7 +176,7 @@ export CXXFLAGS="$CXXFLAGS -fdebug-types-section -femit-struct-debug-baseonly -f
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1688083944
+export SOURCE_DATE_EPOCH=1688137122
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/openldap
 cp %{_builddir}/openldap-%{version}/LICENSE %{buildroot}/usr/share/package-licenses/openldap/bc06cbdf781c87d2df2fe385214f936d010dd2a2 || :

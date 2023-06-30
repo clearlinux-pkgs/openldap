@@ -1,0 +1,10 @@
+--- openldap-2.6.4/servers/slapd/slapd.service~	2023-02-08 18:53:35.000000000 +0000
++++ openldap-2.6.4/servers/slapd/slapd.service	2023-06-30 14:56:15.110642428 +0000
+@@ -7,6 +7,7 @@
+ 
+ [Service]
+ Type=notify
++ConditionPathExists=/etc/sysconfig/slapd
+ Environment="SLAPD_URLS=ldap:/// ldapi:///" "SLAPD_OPTIONS="
+ EnvironmentFile=/etc/sysconfig/slapd
+ ExecStart=%LIBEXECDIR%/slapd -d 0 -h ${SLAPD_URLS} $SLAPD_OPTIONS
