@@ -7,7 +7,7 @@
 #
 Name     : openldap
 Version  : 2.6.4
-Release  : 58
+Release  : 59
 URL      : https://www.openldap.org/software/download/OpenLDAP/openldap-release/openldap-2.6.4.tgz
 Source0  : https://www.openldap.org/software/download/OpenLDAP/openldap-release/openldap-2.6.4.tgz
 Source1  : openldap.tmpfiles
@@ -146,7 +146,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1688073309
+export SOURCE_DATE_EPOCH=1688083944
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
 export FCFLAGS="$FFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
@@ -174,7 +174,7 @@ export CXXFLAGS="$CXXFLAGS -fdebug-types-section -femit-struct-debug-baseonly -f
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1688073309
+export SOURCE_DATE_EPOCH=1688083944
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/openldap
 cp %{_builddir}/openldap-%{version}/LICENSE %{buildroot}/usr/share/package-licenses/openldap/bc06cbdf781c87d2df2fe385214f936d010dd2a2 || :
@@ -465,6 +465,8 @@ rm -f %{buildroot}*/var/openldap-data/DB_CONFIG.example
 %files extras
 %defattr(-,root,root,-)
 /usr/libexec/openldap/back_perl.so
+/usr/libexec/openldap/back_perl.so.2
+/usr/libexec/openldap/back_perl.so.2.0.200
 
 %files lib
 %defattr(-,root,root,-)
@@ -505,8 +507,6 @@ rm -f %{buildroot}*/var/openldap-data/DB_CONFIG.example
 /usr/libexec/openldap/back_passwd.so
 /usr/libexec/openldap/back_passwd.so.2
 /usr/libexec/openldap/back_passwd.so.2.0.200
-/usr/libexec/openldap/back_perl.so.2
-/usr/libexec/openldap/back_perl.so.2.0.200
 /usr/libexec/openldap/back_relay.so
 /usr/libexec/openldap/back_relay.so.2
 /usr/libexec/openldap/back_relay.so.2.0.200
