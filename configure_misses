@@ -20,24 +20,12 @@ Configure miss: closesocket
 Configure miss: closesocket
 Configure miss: conio.h
 Configure miss: conio.h
-Configure miss: conio.h presence
-Configure miss: conio.h presence
-Configure miss: conio.h usability
-Configure miss: conio.h usability
 Configure miss: crypt
 Configure miss: crypt
-Configure miss: direct.h presence
-Configure miss: direct.h presence
-Configure miss: direct.h usability
-Configure miss: direct.h usability
 Configure miss: fetch(3) library
 Configure miss: fetch(3) library
 Configure miss: filio.h
 Configure miss: filio.h
-Configure miss: filio.h presence
-Configure miss: filio.h presence
-Configure miss: filio.h usability
-Configure miss: filio.h usability
 Configure miss: getpassphrase
 Configure miss: getpassphrase
 Configure miss: if toupper() requires islower()
@@ -46,26 +34,14 @@ Configure miss: inet_ntoa_b
 Configure miss: inet_ntoa_b
 Configure miss: non-posix strerror_r
 Configure miss: non-posix strerror_r
-Configure miss: process.h presence
-Configure miss: process.h presence
-Configure miss: process.h usability
-Configure miss: process.h usability
 Configure miss: psap.h
 Configure miss: psap.h
-Configure miss: psap.h presence
-Configure miss: psap.h presence
-Configure miss: psap.h usability
-Configure miss: psap.h usability
 Configure miss: pthread_kill_other_threads_np
 Configure miss: pthread_kill_other_threads_np
 Configure miss: pthread_yield
 Configure miss: pthread_yield
 Configure miss: sasl.h
 Configure miss: sasl.h
-Configure miss: sasl.h presence
-Configure miss: sasl.h presence
-Configure miss: sasl.h usability
-Configure miss: sasl.h usability
 Configure miss: setpwfile
 Configure miss: setpwfile
 Configure miss: struct msghdr.msg_accrightslen
@@ -76,40 +52,16 @@ Configure miss: struct stat.st_vfstype
 Configure miss: struct stat.st_vfstype
 Configure miss: sys/devpoll.h
 Configure miss: sys/devpoll.h
-Configure miss: sys/devpoll.h presence
-Configure miss: sys/devpoll.h presence
-Configure miss: sys/devpoll.h usability
-Configure miss: sys/devpoll.h usability
 Configure miss: sys/event.h
 Configure miss: sys/event.h
-Configure miss: sys/event.h presence
-Configure miss: sys/event.h presence
-Configure miss: sys/event.h usability
-Configure miss: sys/event.h usability
 Configure miss: sys/fstyp.h
 Configure miss: sys/fstyp.h
-Configure miss: sys/fstyp.h presence
-Configure miss: sys/fstyp.h presence
-Configure miss: sys/fstyp.h usability
-Configure miss: sys/fstyp.h usability
 Configure miss: sys/privgrp.h
 Configure miss: sys/privgrp.h
-Configure miss: sys/privgrp.h presence
-Configure miss: sys/privgrp.h presence
-Configure miss: sys/privgrp.h usability
-Configure miss: sys/privgrp.h usability
 Configure miss: sys/uuid.h
 Configure miss: sys/uuid.h
-Configure miss: sys/uuid.h presence
-Configure miss: sys/uuid.h presence
-Configure miss: sys/uuid.h usability
-Configure miss: sys/uuid.h usability
 Configure miss: sys/vmount.h
 Configure miss: sys/vmount.h
-Configure miss: sys/vmount.h presence
-Configure miss: sys/vmount.h presence
-Configure miss: sys/vmount.h usability
-Configure miss: sys/vmount.h usability
 Configure miss: thr_getconcurrency
 Configure miss: thr_getconcurrency
 Configure miss: thr_setconcurrency
