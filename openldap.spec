@@ -9,7 +9,7 @@
 #
 Name     : openldap
 Version  : 2.6.9
-Release  : 63
+Release  : 64
 URL      : https://www.openldap.org/software/download/OpenLDAP/openldap-release/openldap-2.6.9.tgz
 Source0  : https://www.openldap.org/software/download/OpenLDAP/openldap-release/openldap-2.6.9.tgz
 Source1  : openldap.tmpfiles
